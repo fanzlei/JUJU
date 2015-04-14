@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">JUJU</string>
+    <string name="hello_round">Hello Round World!</string>
+    <string name="hello_square">Hello Square World!</string>
+
+    <string name="send_paper">传小纸条</string>
+    <string name="attention">关注</string>
+    <string name="open_in_phone">在手机中打开</string>
+
+</resources>

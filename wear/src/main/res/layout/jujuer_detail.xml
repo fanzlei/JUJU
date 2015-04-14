@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <cn.glassx.wear.juju.widget.MyGridViewPager
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true" />
+    <android.support.wearable.view.DelayedConfirmationView
+        android:id="@+id/delayed_confirm"
+        android:layout_width="52dp"
+        android:layout_height="52dp"
+        android:layout_gravity="center"
+        android:src="@drawable/cancel_circle"
+        app:circle_border_color="@color/lightblue"
+        app:circle_border_width="8dp"
+        app:circle_radius="40dp">
+    </android.support.wearable.view.DelayedConfirmationView>
+</FrameLayout>
+
+
+
+
+
