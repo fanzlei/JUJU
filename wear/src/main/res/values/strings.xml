@@ -7,4 +7,16 @@
     <string name="attention">关注</string>
     <string name="open_in_phone">在手机中打开</string>
 
+    <!--传小纸条中的快速回复内容-->
+    <string-array name="customAnswer">
+        <item>你好^—^</item>
+        <item>很高兴认识你！</item>
+        <item>我在附近，一起聊聊吧！</item>
+        <item>我是来自二次元的精灵</item>
+        <item>召唤寄生兽</item>
+    </string-array>
+    <string name="num1">你好^—^</string>
+    <string name="num2">很高兴认识你！</string>
+    <!--传小纸条中的快速回复内容-->
+
 </resources>

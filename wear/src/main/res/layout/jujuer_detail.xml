@@ -9,16 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:keepScreenOn="true" />
-    <android.support.wearable.view.DelayedConfirmationView
-        android:id="@+id/delayed_confirm"
-        android:layout_width="52dp"
-        android:layout_height="52dp"
-        android:layout_gravity="center"
-        android:src="@drawable/cancel_circle"
-        app:circle_border_color="@color/lightblue"
-        app:circle_border_width="8dp"
-        app:circle_radius="40dp">
-    </android.support.wearable.view.DelayedConfirmationView>
 </FrameLayout>
 
 

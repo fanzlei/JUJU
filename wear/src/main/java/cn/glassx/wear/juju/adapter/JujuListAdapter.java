@@ -51,7 +51,6 @@ public   class JujuListAdapter extends WearableListView.Adapter {
         CircledImageView imageView = (CircledImageView)itemHolder.itemView.findViewById(R.id.circle);
         view.setText(jujUers.get(position).getName());
         imageView.setImageDrawable(new BitmapDrawable(mContext.getResources(),jujUers.get(position).getPortrail()));
-        holder.itemView.setTag(position);
     }
 
     @Override

@@ -1,9 +1,18 @@
 package cn.glassx.wear.juju;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataMap;
@@ -16,15 +25,20 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import cn.glassx.wear.juju.app.MainActivity;
+import cn.glassx.wear.juju.app.PersonDetail;
 import cn.glassx.wear.juju.model.JUJUer;
 
 /**
  * Created by Fanz on 4/14/15.
  * 处理手表发送过来的消息类
  */
-public class MessageHandler {
+public class MessageHandler implements LocationListener{
 
     private GoogleApiClient mGoogleApiClient;
+
+    public static final String PERSON_NAME = "PERSON_NAME";
+    private Double laTitude,longTitude;
+    LocationManager locationManager;
 
     public void handler(MessageEvent event){
         getGoogleApiClient();
@@ -52,9 +66,11 @@ public class MessageHandler {
 
     /*执行传小纸条到用户*/
     private void sendMessageToJUJUer(String param){
-        String name = param;
-        Log.d("JUJU","执行传小纸条到用户："+name);
+        String name = param.split("/")[0];
+        String message = param.split("/")[1];
+        Log.d("JUJU","执行传小纸条到用户："+name+" 消息内容："+message);
         //Todo 执行传小纸条到用户
+        RequestQueue requestQueue =  Volley.newRequestQueue(AppConfig.applicationContext);
 
     }
 
@@ -62,14 +78,23 @@ public class MessageHandler {
     private void openInPhone(String param){
         String name = param;
         Log.d("JUJU","执行在手机中打开："+name);
-        //Todo 执行在手机中打开
-
+        Intent intent = new Intent(AppConfig.applicationContext, PersonDetail.class);
+        intent.putExtra(PERSON_NAME,name);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        AppConfig.applicationContext.startActivity(intent);
 
     }
     /*执行发送附近的人的信息到手表*/
     private void sendJUJUerListData(){
-        //Todo 从服务器获取附近的人列表,暂时模拟数据
         Log.d("JUJU", "onMessageReceived path =" + AppConfig.PATH_GET_JUJUERS);
+        locationManager = (LocationManager)AppConfig.applicationContext.getSystemService(Context.LOCATION_SERVICE);
+        updateLocation();
+        Location location = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+        laTitude = location.getLatitude();
+        longTitude = location.getLongitude();
+        Log.d("JUJU","发送用户列表到手表，当前位置："+laTitude+"|"+longTitude);
+        //Todo 从服务器获取附近的人列表,暂时模拟数据
+
         //本地模拟数据
         SyncData.addJUJUer(AppConfig.applicationContext,8);
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(AppConfig.PATH_GET_JUJUERS);
@@ -87,7 +112,7 @@ public class MessageHandler {
             arrayList.add(dataMap1);
         }
         dataMap.putDataMapArrayList(AppConfig.PATH_GET_JUJUERS,arrayList);
-        dataMap.putInt("makeSureDefirence", MainActivity.i++);
+        dataMap.putInt("makeSureDifference", MainActivity.i++);
         PutDataRequest request = putDataMapRequest.asPutDataRequest();
         Wearable.DataApi.putDataItem(mGoogleApiClient,request);
     }
@@ -97,5 +122,33 @@ public class MessageHandler {
         //Todo 暂定关注某一用户，收到的消息内容为用户名
         String name = params;
         Log.d("JUJU","执行关注："+name);
+    }
+
+    private void updateLocation(){
+                locationManager.requestLocationUpdates(
+                        LocationManager.NETWORK_PROVIDER,
+                        1000*60,
+                        20,
+                        MessageHandler.this);
+    }
+
+
+    @Override
+    public void onLocationChanged(Location location) {
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
     }
 }

@@ -47,7 +47,6 @@ public class JUJUerList extends Activity implements WearableListView.ClickListen
     private WearableListView.Adapter mAdapter;
     private GoogleApiClient googleApiClient;
     public static Handler handler;
-    /*用于判断应用是否处于后台，使得再次打开应用时自动从手机获取最新信息*/
     private boolean isExit = true;
 
     @Override
@@ -56,6 +55,10 @@ public class JUJUerList extends Activity implements WearableListView.ClickListen
         setContentView(R.layout.jujuer_list);
         personList = (WearableListView) findViewById(R.id.wearable_list);
         personList.setClickListener(JUJUerList.this);
+        googleApiClient = new GoogleApiClient.Builder(this)
+                .addApi(Wearable.API)
+                .addConnectionCallbacks(this)
+                .addOnConnectionFailedListener(this).build();
         handler = new Handler(){
             @Override
             public void handleMessage(Message msg) {
@@ -74,39 +77,31 @@ public class JUJUerList extends Activity implements WearableListView.ClickListen
     protected void onStart() {
         super.onStart();
         Log.d("JUJU","JUJUList onStart");
-        googleApiClient = new GoogleApiClient.Builder(this)
-                .addApi(Wearable.API)
-                .addConnectionCallbacks(this)
-                .addOnConnectionFailedListener(this).build();
+        //当本地没有存储附近的人信息时
+        if(RuntimeData.JUJUers.isEmpty()||isExit){
+            googleApiClient.connect();
+        }
+        isExit = true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        isExit = true;
-        //当本地没有存储附近的人信息时
-        if(RuntimeData.JUJUers.isEmpty()){
-            googleApiClient.connect();
-        }
-        personList.setAdapter(new JujuListAdapter(JUJUerList.this, RuntimeData.JUJUers));
+
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        if(isExit){
-            RuntimeData.JUJUers = new ArrayList<JUJUer>();
-        }
         googleApiClient.disconnect();
     }
 
     @Override
     public void onClick(WearableListView.ViewHolder viewHolder) {
-        Integer tagPosition = (Integer) viewHolder.itemView.getTag();
+        Log.d("JUJU","点击了位置："+viewHolder.getPosition());
         isExit = false;
-        Log.d("JUJU","点击了位置："+tagPosition);
         Intent intent = new Intent(this,JUJUDetail.class);
-        intent.putExtra(AppConfig.POSITION_IN_JUJUERS,tagPosition);
+        intent.putExtra(AppConfig.POSITION_IN_JUJUERS,viewHolder.getPosition());
         startActivity(intent);
     }
 

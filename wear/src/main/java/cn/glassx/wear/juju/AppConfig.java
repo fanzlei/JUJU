@@ -10,6 +10,7 @@ public class AppConfig {
 
     public static final String POSITION_IN_JUJUERS = "position";
 
+    /*应用上下文*/
     public static Context applicationContext;
 
     /*----与手表数据传输使用到的PATH值----*/

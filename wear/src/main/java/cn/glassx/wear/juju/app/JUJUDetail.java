@@ -29,6 +29,7 @@ import com.google.android.gms.wearable.Wearable;
 import java.util.Collection;
 import java.util.HashSet;
 
+import cn.glassx.wear.juju.AnimationActivity;
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
 import cn.glassx.wear.juju.RuntimeData;
@@ -38,14 +39,11 @@ import cn.glassx.wear.juju.adapter.GridPagerAdapter;
 /**
  * Created by Fanz on 4/7/15.
  */
-public class JUJUDetail extends Activity implements DelayedConfirmationView.DelayedConfirmationListener{
+public class JUJUDetail extends Activity{
 
     GridViewPager pager;
     public static int position = -1;
     private GestureDetector detector;
-    private DelayedConfirmationView mDelayedView;
-    private boolean isAnimating = false;
-    private boolean isForceStop =false;
     private GoogleApiClient googleApiClient;
 
     @Override
@@ -62,46 +60,11 @@ public class JUJUDetail extends Activity implements DelayedConfirmationView.Dela
                 return detector.onTouchEvent(event);
             }
         });
-        mDelayedView = (DelayedConfirmationView)findViewById(R.id.delayed_confirm);
-        mDelayedView.setListener(this);
         googleApiClient = new GoogleApiClient.Builder(this).addApi(Wearable.API).build();
         googleApiClient.connect();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        pager.setVisibility(View.VISIBLE);
-        mDelayedView.setVisibility(View.INVISIBLE);
-    }
 
-    @Override
-    public void onTimerFinished(View view) {
-        if(isForceStop){
-            isAnimating =false;
-            isForceStop = false;
-            return;}
-        Intent intent = new Intent(this, ConfirmationActivity.class);
-        intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
-                ConfirmationActivity.SUCCESS_ANIMATION);
-        intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE,
-                "关注成功");
-        startActivity(intent);
-        isForceStop = false;
-        isAnimating = false;
-        //Todo 向手机发送关注消息，消息内容未确定,这里为用户名
-        SendMessageManager.sendMessage(
-                AppConfig.PATH_ATTENTION,
-                RuntimeData.JUJUers.get(position).getName(),
-                "发送关注用户消息：");
-    }
-
-    @Override
-    public void onTimerSelected(View view) {
-        isForceStop = true;
-        pager.setVisibility(View.VISIBLE);
-        mDelayedView.setVisibility(View.INVISIBLE);
-    }
 
     private class MyDetectorListener implements GestureDetector.OnGestureListener{
 
@@ -120,39 +83,33 @@ public class JUJUDetail extends Activity implements DelayedConfirmationView.Dela
         @Override
         public boolean onSingleTapUp(MotionEvent e) {
             Log.d("JUJU","onSingleTapUp");
+            Intent intent;
             switch(pager.getCurrentItem().x){
                 case 0:
 
                     break;
                 case 1:
-                    Intent intent = new Intent(JUJUDetail.this, ConfirmationActivity.class);
+                    intent = new Intent(JUJUDetail.this,InputMessage.class);
+                    intent.putExtra(AppConfig.POSITION_IN_JUJUERS,position);
+                    startActivity(intent);
+
+
+                    break;
+                case 2:
+                    intent = new Intent(JUJUDetail.this, AnimationActivity.class);
+                    intent.putExtra(AnimationActivity.MESSAGE_PATH,AppConfig.PATH_ATTENTION);
+                    intent.putExtra(AnimationActivity.MESSAGE_STRING,RuntimeData.JUJUers.get(position).getName());
+                    intent.putExtra(AnimationActivity.ANIMATING_TEXT,"关注");
+                    intent.putExtra(AnimationActivity.SUCCESS_TEXT,"关注成功");
+                    startActivity(intent);
+                    break;
+                case 3:
+                    intent = new Intent(JUJUDetail.this, ConfirmationActivity.class);
                     intent.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
                             ConfirmationActivity.SUCCESS_ANIMATION);
                     intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE,
-                            "发送成功");
-                    startActivity(intent);
-                    SendMessageManager.sendMessage(
-                            AppConfig.PATH_SEND_MESSAGE,
-                            RuntimeData.JUJUers.get(position).getName(),
-                            "传小纸条：");
-                    break;
-                case 2:
-                    if(isAnimating){
-                        break;
-                    }
-                    pager.setVisibility(View.INVISIBLE);
-                    mDelayedView.setVisibility(View.VISIBLE);
-                    mDelayedView.setTotalTimeMs(2000);
-                    mDelayedView.start();
-                    isAnimating = true;
-                    break;
-                case 3:
-                    Intent intent1 = new Intent(JUJUDetail.this, ConfirmationActivity.class);
-                    intent1.putExtra(ConfirmationActivity.EXTRA_ANIMATION_TYPE,
-                            ConfirmationActivity.SUCCESS_ANIMATION);
-                    intent1.putExtra(ConfirmationActivity.EXTRA_MESSAGE,
                             "请查看手机");
-                    startActivity(intent1);
+                    startActivity(intent);
                     SendMessageManager.sendMessage(
                             AppConfig.PATH_OPEN_IN_PHONE,
                             RuntimeData.JUJUers.get(position).getName(),

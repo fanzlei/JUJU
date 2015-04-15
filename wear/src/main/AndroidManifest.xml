@@ -24,7 +24,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".app.JUJUDetail"/>
+        <activity
+            android:name=".app.JUJUDetail"
+            android:launchMode="singleTask"/>
         <activity
             android:name="android.support.wearable.activity.ConfirmationActivity">
             <intent-filter>
@@ -32,8 +34,9 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-
-
+        <activity android:name=".AnimationActivity"/>
+        <activity android:name=".app.InputMessage"/>
+        <activity android:name=".app.SelectCunstomInput"/>
 
         <service
             android:name=".WearableMessageListenerService" >

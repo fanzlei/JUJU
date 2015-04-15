@@ -31,27 +31,27 @@ public class DataDecode {
 
     /**
      * 把从手机端传过来的数据保存到RuntimeData中
-     * */
-    public static void getJUJUList(DataEvent dataEvent, GoogleApiClient client){
+     */
+    public static void getJUJUList(DataEvent dataEvent, GoogleApiClient client) {
         mGoogleApiClient = client;
         DataItem dataItem = dataEvent.getDataItem();
         DataMapItem dataMapItem = DataMapItem.fromDataItem(dataItem);
-        ArrayList<DataMap> arrayList =  dataMapItem.getDataMap().getDataMapArrayList(AppConfig.PATH_GET_JUJUERS);
-        for(DataMap dataMap : arrayList){
+        ArrayList<DataMap> arrayList = dataMapItem.getDataMap().getDataMapArrayList(AppConfig.PATH_GET_JUJUERS);
+        for (DataMap dataMap : arrayList) {
             JUJUer jujUer = new JUJUer();
             jujUer.setName(dataMap.getString(AppConfig.NAME));
             jujUer.setDistance(dataMap.getString(AppConfig.DISTANCE));
             String[] labels =
                     dataMap.getString(AppConfig.LABELS).split("/");
-            jujUer.setLabels(labels );
+            jujUer.setLabels(labels);
             jujUer.setPortrail(loadBitmapFromAsset(dataMap.getAsset(AppConfig.PORTRAIL)));
-            Log.d("JUJU","获得jujuer："+jujUer.getName()+
-            "distance="+jujUer.getDistance()+
-            "labels="+jujUer.getLabels()+
-            "portrail size="+jujUer.getPortrail().getByteCount());
+            Log.d("JUJU", "获得jujuer：" + jujUer.getName() +
+                    "distance=" + jujUer.getDistance() +
+                    "labels=" + jujUer.getLabels() +
+                    "portrail size=" + jujUer.getPortrail().getByteCount());
             RuntimeData.JUJUers.add(jujUer);
         }
-        Log.d("JUJU","JUJUList size="+RuntimeData.JUJUers.size());
+        Log.d("JUJU", "JUJUList size=" + RuntimeData.JUJUers.size());
 
         JUJUerList.handler.sendEmptyMessage(0x123);
     }
@@ -65,7 +65,7 @@ public class DataDecode {
         if (!result.isSuccess()) {
             return null;
         }
-// convert asset into a file descriptor and block until it's ready
+        // convert asset into a file descriptor and block until it's ready
         InputStream assetInputStream = Wearable.DataApi.getFdForAsset(
                 mGoogleApiClient, asset).await().getInputStream();
         mGoogleApiClient.disconnect();
@@ -74,7 +74,7 @@ public class DataDecode {
             Log.w("JUJU", "Requested an unknown Asset.");
             return null;
         }
-// decode the stream into a bitmap
+        // decode the stream into a bitmap
         return BitmapFactory.decodeStream(assetInputStream);
     }
 }

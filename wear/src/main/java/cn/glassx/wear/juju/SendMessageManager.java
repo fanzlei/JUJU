@@ -33,6 +33,16 @@ public class SendMessageManager {
         new StartSendMessageTask().execute(new String[]{path,message,logMessage});
     }
 
+    /**
+     * 发送消息到手机
+     * @param path 消息的路径信息
+     * @param message 消息内容
+     * */
+    public static void sendMessage(String path, String message){
+        if(googleApiClient == null){getGoogleApiClient();}
+        new StartSendMessageTask().execute(new String[]{path,message,"发送消息状态："});
+    }
+
     private static void getGoogleApiClient(){
         googleApiClient = new GoogleApiClient.Builder(AppConfig.applicationContext).addApi(Wearable.API).build();
         googleApiClient.connect();
