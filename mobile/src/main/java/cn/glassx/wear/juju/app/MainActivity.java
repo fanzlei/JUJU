@@ -4,20 +4,12 @@ import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.PendingResult;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.nearby.connection.Connections;
 import com.google.android.gms.wearable.Asset;
-import com.google.android.gms.wearable.DataApi;
 import com.google.android.gms.wearable.DataMap;
-import com.google.android.gms.wearable.MessageApi;
-import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.PutDataMapRequest;
 import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
@@ -27,7 +19,7 @@ import java.util.ArrayList;
 
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.SyncData;
+import cn.glassx.wear.juju.utils.RuntimeData;
 import cn.glassx.wear.juju.model.JUJUer;
 
 
@@ -64,11 +56,11 @@ public class MainActivity extends ActionBarActivity {
 public void sendData(View view){
     if(client.isConnected()){
         //本地模拟数据
-        SyncData.addJUJUer(this, 8);
+        RuntimeData.addJUJUer(this, 8);
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(AppConfig.PATH_GET_JUJUERS);
         DataMap dataMap =  putDataMapRequest.getDataMap();
         ArrayList<DataMap> arrayList = new ArrayList<>();
-        for(JUJUer jujUer : SyncData.JUJUers){
+        for(JUJUer jujUer : RuntimeData.JUJUers){
             Bundle bundle = new Bundle();
             bundle.putString(AppConfig.NAME,jujUer.getName());
             bundle.putString(AppConfig.DISTANCE,jujUer.getDistance());

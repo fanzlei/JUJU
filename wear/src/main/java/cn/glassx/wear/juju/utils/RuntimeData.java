@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju;
+package cn.glassx.wear.juju.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,6 +8,7 @@ import android.graphics.drawable.Drawable;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.glassx.wear.juju.R;
 import cn.glassx.wear.juju.model.JUJUer;
 
 
@@ -26,7 +27,7 @@ public class RuntimeData {
     public static void addJUJUer(Context context, int size) {
         JUJUers = new ArrayList<>();
         for (int i = 0; i < size; i++) {
-            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(),R.drawable.portrail);
+            Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.portrail);
             JUJUers.add(new JUJUer(
                     "fanz",
                     new String[]{"宅", "动漫", "科技"},

@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju;
+package cn.glassx.wear.juju.utils;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -8,13 +8,14 @@ import android.graphics.drawable.Drawable;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.glassx.wear.juju.R;
 import cn.glassx.wear.juju.model.JUJUer;
 
 /**
  * Created by Fanz on 4/13/15.
  * 和手表同步的数据类
  */
-public class SyncData {
+public class RuntimeData {
 
     /**附近的人信息*/
     public static List<JUJUer> JUJUers = null;

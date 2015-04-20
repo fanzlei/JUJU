@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju;
+package cn.glassx.wear.juju.utils;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -13,6 +13,8 @@ import com.google.android.gms.wearable.Wearable;
 
 import java.util.Collection;
 import java.util.HashSet;
+
+import cn.glassx.wear.juju.AppConfig;
 
 /**
  * Created by Fanz on 4/14/15.

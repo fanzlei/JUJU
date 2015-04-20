@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju;
+package cn.glassx.wear.juju.app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,8 @@ import android.support.wearable.view.DelayedConfirmationView;
 import android.view.View;
 import android.widget.TextView;
 
-import cn.glassx.wear.juju.app.JUJUDetail;
+import cn.glassx.wear.juju.R;
+import cn.glassx.wear.juju.utils.SendMessageManager;
 
 
 /**
@@ -65,7 +66,7 @@ public class AnimationActivity extends Activity implements DelayedConfirmationVi
         intent.putExtra(ConfirmationActivity.EXTRA_MESSAGE,
                 successText);
         this.startActivity(intent);
-        SendMessageManager.sendMessage(messagePath,messageString);
+        SendMessageManager.sendMessage(messagePath, messageString);
         finish();
     }
 

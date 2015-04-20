@@ -5,7 +5,6 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.wearable.view.CircledImageView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.RuntimeData;
+import cn.glassx.wear.juju.utils.RuntimeData;
 import cn.glassx.wear.juju.app.JUJUDetail;
 import cn.glassx.wear.juju.model.JUJUer;
 

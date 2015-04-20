@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju;
+package cn.glassx.wear.juju.utils;
 
 import android.content.Context;
 import android.content.Intent;
@@ -10,8 +10,6 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.android.volley.RequestQueue;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.Asset;
@@ -24,6 +22,7 @@ import com.google.android.gms.wearable.Wearable;
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
+import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.app.MainActivity;
 import cn.glassx.wear.juju.app.PersonDetail;
 import cn.glassx.wear.juju.model.JUJUer;
@@ -96,11 +95,11 @@ public class MessageHandler implements LocationListener{
         //Todo 从服务器获取附近的人列表,暂时模拟数据
 
         //本地模拟数据
-        SyncData.addJUJUer(AppConfig.applicationContext,8);
+        RuntimeData.addJUJUer(AppConfig.applicationContext, 8);
         PutDataMapRequest putDataMapRequest = PutDataMapRequest.create(AppConfig.PATH_GET_JUJUERS);
         DataMap dataMap =  putDataMapRequest.getDataMap();
         ArrayList<DataMap> arrayList = new ArrayList<>();
-        for(JUJUer jujUer : SyncData.JUJUers){
+        for(JUJUer jujUer : RuntimeData.JUJUers){
             Bundle bundle = new Bundle();
             bundle.putString(AppConfig.NAME,jujUer.getName());
             bundle.putString(AppConfig.DISTANCE,jujUer.getDistance());

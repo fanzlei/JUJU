@@ -6,9 +6,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
-import cn.glassx.wear.juju.MessageHandler;
+import cn.glassx.wear.juju.utils.MessageHandler;
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.SyncData;
+import cn.glassx.wear.juju.utils.RuntimeData;
 import cn.glassx.wear.juju.model.JUJUer;
 
 /**
@@ -26,7 +26,7 @@ public class PersonDetail extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.person_detail);
-        for(JUJUer jj : SyncData.JUJUers){
+        for(JUJUer jj : RuntimeData.JUJUers){
             if(jj.getName().equals(getIntent().getStringExtra(MessageHandler.PERSON_NAME))){
                 jujUer = jj;
                 break;

@@ -4,12 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.view.WearableListView;
-import android.view.View;
 
-import cn.glassx.wear.juju.AnimationActivity;
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.RuntimeData;
+import cn.glassx.wear.juju.utils.RuntimeData;
 import cn.glassx.wear.juju.adapter.CustomInputAdapter;
 
 /**

@@ -5,20 +5,16 @@ package cn.glassx.wear.juju;
  */
 
 import android.util.Log;
-import android.widget.Toast;
 
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.wearable.DataEvent;
 import com.google.android.gms.wearable.DataEventBuffer;
-import com.google.android.gms.wearable.DataItem;
-import com.google.android.gms.wearable.DataMap;
-import com.google.android.gms.wearable.DataMapItem;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
-import java.util.ArrayList;
+import cn.glassx.wear.juju.utils.DataDecode;
 
 /**
  * Listens for a message telling it to start the Wearable MainActivity.
@@ -56,7 +52,7 @@ public class WearableMessageListenerService extends WearableListenerService {
         for(DataEvent dataEvent : dataEvents){
             switch (dataEvent.getDataItem().getUri().getPath()){
                 case AppConfig.PATH_GET_JUJUERS:
-                    DataDecode.getJUJUList(dataEvent,mGoogleApiClient);
+                    DataDecode.getJUJUList(dataEvent, mGoogleApiClient);
                     break;
 
             }

@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju;
+package cn.glassx.wear.juju.utils;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -17,6 +17,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.app.JUJUerList;
 import cn.glassx.wear.juju.model.JUJUer;
 

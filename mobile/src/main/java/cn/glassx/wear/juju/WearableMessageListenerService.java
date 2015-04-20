@@ -4,27 +4,16 @@ package cn.glassx.wear.juju;
  * Created by Fanz on 4/8/15.
  */
 
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.wearable.Asset;
 import com.google.android.gms.wearable.DataEventBuffer;
-import com.google.android.gms.wearable.DataMap;
 import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.PutDataMapRequest;
-import com.google.android.gms.wearable.PutDataRequest;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
 
-import java.io.ByteArrayOutputStream;
-import java.util.ArrayList;
-
-import cn.glassx.wear.juju.app.MainActivity;
-import cn.glassx.wear.juju.model.JUJUer;
+import cn.glassx.wear.juju.utils.MessageHandler;
 
 /**
  * Listens for a message telling it to start the Wearable MainActivity.

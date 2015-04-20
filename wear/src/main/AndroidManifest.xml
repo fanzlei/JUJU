@@ -34,7 +34,7 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".AnimationActivity"/>
+        <activity android:name=".app.AnimationActivity"/>
         <activity android:name=".app.InputMessage"/>
         <activity android:name=".app.SelectCunstomInput"/>
 

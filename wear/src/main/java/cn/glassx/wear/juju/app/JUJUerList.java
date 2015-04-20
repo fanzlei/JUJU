@@ -3,41 +3,22 @@ package cn.glassx.wear.juju.app;
  * Created by Fanz on 4/8/15.
  */
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.wearable.view.CircledImageView;
-import android.support.wearable.view.WatchViewStub;
 import android.support.wearable.view.WearableListView;
 import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.wearable.MessageApi;
-import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
 
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.RuntimeData;
-import cn.glassx.wear.juju.SendMessageManager;
-import cn.glassx.wear.juju.WearableMessageListenerService;
+import cn.glassx.wear.juju.utils.RuntimeData;
+import cn.glassx.wear.juju.utils.SendMessageManager;
 import cn.glassx.wear.juju.adapter.JujuListAdapter;
-import cn.glassx.wear.juju.model.JUJUer;
 
 public class JUJUerList extends Activity implements WearableListView.ClickListener
         ,GoogleApiClient.OnConnectionFailedListener

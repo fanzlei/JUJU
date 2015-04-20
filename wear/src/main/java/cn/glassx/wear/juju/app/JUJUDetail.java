@@ -1,39 +1,22 @@
 package cn.glassx.wear.juju.app;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.wearable.activity.ConfirmationActivity;
-import android.support.wearable.view.DelayedConfirmationView;
 import android.support.wearable.view.GridViewPager;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.accessibility.AccessibilityEvent;
 
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.ResultCallback;
-import com.google.android.gms.wearable.DataApi;
-import com.google.android.gms.wearable.DataEvent;
-import com.google.android.gms.wearable.DataEventBuffer;
-import com.google.android.gms.wearable.DataMapItem;
-import com.google.android.gms.wearable.MessageApi;
-import com.google.android.gms.wearable.Node;
-import com.google.android.gms.wearable.NodeApi;
 import com.google.android.gms.wearable.Wearable;
 
-import java.util.Collection;
-import java.util.HashSet;
-
-import cn.glassx.wear.juju.AnimationActivity;
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.RuntimeData;
-import cn.glassx.wear.juju.SendMessageManager;
+import cn.glassx.wear.juju.utils.RuntimeData;
+import cn.glassx.wear.juju.utils.SendMessageManager;
 import cn.glassx.wear.juju.adapter.GridPagerAdapter;
 
 /**
