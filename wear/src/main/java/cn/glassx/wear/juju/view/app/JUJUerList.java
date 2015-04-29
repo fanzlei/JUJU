@@ -4,19 +4,22 @@ package cn.glassx.wear.juju.view.app;
  */
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
+import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
+import android.content.ServiceConnection;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Message;
 import android.support.wearable.view.WearableListView;
 import android.util.Log;
-import android.widget.Toast;
 
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.bluetooth.bluetoothpair.BluetoothStateReceiver;
-import cn.glassx.wear.juju.bluetooth.bluetoothpair.DeviceSharedPrefs;
+import cn.glassx.wear.juju.bluetooth.BluetoothService;
+import cn.glassx.wear.juju.bluetooth.TransMission;
+import cn.glassx.wear.juju.protobuf.Proto;
 import cn.glassx.wear.juju.utils.RuntimeData;
 import cn.glassx.wear.juju.view.adapter.JujuListAdapter;
 
@@ -25,9 +28,20 @@ public class JUJUerList extends Activity implements WearableListView.ClickListen
     private static WearableListView personList;
     private WearableListView.Adapter mAdapter;
     public static Handler handler;
-    public static final int MESSAGE_WHAT_BLUETOOTH = 0x334;
-    private static BluetoothDevice device;
     private boolean isExit = true;
+    BluetoothService.MyBinder binder;
+    private ServiceConnection conn = new ServiceConnection() {
+        @Override
+        public void onServiceConnected(ComponentName name, IBinder service) {
+            binder = (BluetoothService.MyBinder)service;
+            getPersonList();
+        }
+
+        @Override
+        public void onServiceDisconnected(ComponentName name) {
+
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,27 +57,11 @@ public class JUJUerList extends Activity implements WearableListView.ClickListen
                 if(msg.what == 0x123){
                     Log.d("JUJU", "handler msg,set the adapter of personList");
                     personList.setAdapter(new JujuListAdapter(JUJUerList.this, RuntimeData.JUJUers));
-                }else if(msg.what == MESSAGE_WHAT_BLUETOOTH){
-                    device = (BluetoothDevice)msg.obj;
-
                 }
             }
         };
-    }
 
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        BluetoothDevice device = new DeviceSharedPrefs(this).getDevice();
-        if(device.getAddress().equals("")){
-            Toast.makeText(this,"请用手机连接手表蓝牙",Toast.LENGTH_SHORT).show();
-            return;
-        }
-        IntentFilter filter = new IntentFilter();
-        filter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
-        registerReceiver(new BluetoothStateReceiver(),filter);
-
+        bindService(new Intent(this, BluetoothService.class),conn, Context.BIND_AUTO_CREATE );
     }
 
     @Override
@@ -78,5 +76,14 @@ public class JUJUerList extends Activity implements WearableListView.ClickListen
     @Override
     public void onTopEmptyRegionClick() {
 
+    }
+
+    private void getPersonList(){
+        binder.getPersonList(new TransMission.OnDataBackListener() {
+            @Override
+            public void onDataBack(Proto.Envelope envelope) {
+                Log.d("got personList size = ",String.valueOf(envelope.getJujuerEntityList().size()));
+            }
+        });
     }
 }

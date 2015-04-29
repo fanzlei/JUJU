@@ -58,17 +58,28 @@ public final class Proto {
     VoiceEnityOrBuilder getVoiceEntityOrBuilder();
 
     /**
-     * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
      */
-    boolean hasJujuerEntity();
+    java.util.List<JUJUerEntity>
+        getJujuerEntityList();
     /**
-     * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
      */
-    JUJUerEntity getJujuerEntity();
+    JUJUerEntity getJujuerEntity(int index);
     /**
-     * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
      */
-    JUJUerEntityOrBuilder getJujuerEntityOrBuilder();
+    int getJujuerEntityCount();
+    /**
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     */
+    java.util.List<? extends JUJUerEntityOrBuilder>
+        getJujuerEntityOrBuilderList();
+    /**
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     */
+    JUJUerEntityOrBuilder getJujuerEntityOrBuilder(
+            int index);
   }
   /**
    * Protobuf type {@code cn.glassx.wear.juju.protobuf.Envelope}
@@ -152,16 +163,11 @@ public final class Proto {
               break;
             }
             case 50: {
-              JUJUerEntity.Builder subBuilder = null;
-              if (((bitField0_ & 0x00000010) == 0x00000010)) {
-                subBuilder = jujuerEntity_.toBuilder();
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                jujuerEntity_ = new java.util.ArrayList<JUJUerEntity>();
+                mutable_bitField0_ |= 0x00000010;
               }
-              jujuerEntity_ = input.readMessage(JUJUerEntity.PARSER, extensionRegistry);
-              if (subBuilder != null) {
-                subBuilder.mergeFrom(jujuerEntity_);
-                jujuerEntity_ = subBuilder.buildPartial();
-              }
-              bitField0_ |= 0x00000010;
+              jujuerEntity_.add(input.readMessage(JUJUerEntity.PARSER, extensionRegistry));
               break;
             }
           }
@@ -172,6 +178,9 @@ public final class Proto {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          jujuerEntity_ = java.util.Collections.unmodifiableList(jujuerEntity_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -298,24 +307,38 @@ public final class Proto {
     }
 
     public static final int JUJUER_ENTITY_FIELD_NUMBER = 6;
-    private JUJUerEntity jujuerEntity_;
+    private java.util.List<JUJUerEntity> jujuerEntity_;
     /**
-     * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
      */
-    public boolean hasJujuerEntity() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    /**
-     * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
-     */
-    public JUJUerEntity getJujuerEntity() {
+    public java.util.List<JUJUerEntity> getJujuerEntityList() {
       return jujuerEntity_;
     }
     /**
-     * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
      */
-    public JUJUerEntityOrBuilder getJujuerEntityOrBuilder() {
+    public java.util.List<? extends JUJUerEntityOrBuilder>
+        getJujuerEntityOrBuilderList() {
       return jujuerEntity_;
+    }
+    /**
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     */
+    public int getJujuerEntityCount() {
+      return jujuerEntity_.size();
+    }
+    /**
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     */
+    public JUJUerEntity getJujuerEntity(int index) {
+      return jujuerEntity_.get(index);
+    }
+    /**
+     * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+     */
+    public JUJUerEntityOrBuilder getJujuerEntityOrBuilder(
+        int index) {
+      return jujuerEntity_.get(index);
     }
 
     private void initFields() {
@@ -323,7 +346,7 @@ public final class Proto {
       version_ = 0;
       extras_ = com.google.protobuf.ByteString.EMPTY;
       voiceEntity_ = VoiceEnity.getDefaultInstance();
-      jujuerEntity_ = JUJUerEntity.getDefaultInstance();
+      jujuerEntity_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -339,8 +362,8 @@ public final class Proto {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (hasJujuerEntity()) {
-        if (!getJujuerEntity().isInitialized()) {
+      for (int i = 0; i < getJujuerEntityCount(); i++) {
+        if (!getJujuerEntity(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -364,8 +387,8 @@ public final class Proto {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeMessage(5, voiceEntity_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeMessage(6, jujuerEntity_);
+      for (int i = 0; i < jujuerEntity_.size(); i++) {
+        output.writeMessage(6, jujuerEntity_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -392,9 +415,9 @@ public final class Proto {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(5, voiceEntity_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+      for (int i = 0; i < jujuerEntity_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(6, jujuerEntity_);
+          .computeMessageSize(6, jujuerEntity_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -528,11 +551,11 @@ public final class Proto {
         }
         bitField0_ = (bitField0_ & ~0x00000008);
         if (jujuerEntityBuilder_ == null) {
-          jujuerEntity_ = JUJUerEntity.getDefaultInstance();
+          jujuerEntity_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           jujuerEntityBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -581,10 +604,11 @@ public final class Proto {
         } else {
           result.voiceEntity_ = voiceEntityBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
         if (jujuerEntityBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            jujuerEntity_ = java.util.Collections.unmodifiableList(jujuerEntity_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
           result.jujuerEntity_ = jujuerEntity_;
         } else {
           result.jujuerEntity_ = jujuerEntityBuilder_.build();
@@ -619,8 +643,31 @@ public final class Proto {
         if (other.hasVoiceEntity()) {
           mergeVoiceEntity(other.getVoiceEntity());
         }
-        if (other.hasJujuerEntity()) {
-          mergeJujuerEntity(other.getJujuerEntity());
+        if (jujuerEntityBuilder_ == null) {
+          if (!other.jujuerEntity_.isEmpty()) {
+            if (jujuerEntity_.isEmpty()) {
+              jujuerEntity_ = other.jujuerEntity_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureJujuerEntityIsMutable();
+              jujuerEntity_.addAll(other.jujuerEntity_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.jujuerEntity_.isEmpty()) {
+            if (jujuerEntityBuilder_.isEmpty()) {
+              jujuerEntityBuilder_.dispose();
+              jujuerEntityBuilder_ = null;
+              jujuerEntity_ = other.jujuerEntity_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              jujuerEntityBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getJujuerEntityFieldBuilder() : null;
+            } else {
+              jujuerEntityBuilder_.addAllMessages(other.jujuerEntity_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -635,8 +682,8 @@ public final class Proto {
           
           return false;
         }
-        if (hasJujuerEntity()) {
-          if (!getJujuerEntity().isInitialized()) {
+        for (int i = 0; i < getJujuerEntityCount(); i++) {
+          if (!getJujuerEntity(i).isInitialized()) {
             
             return false;
           }
@@ -922,115 +969,239 @@ public final class Proto {
         return voiceEntityBuilder_;
       }
 
-      private JUJUerEntity jujuerEntity_ = JUJUerEntity.getDefaultInstance();
-      private com.google.protobuf.SingleFieldBuilder<
-          JUJUerEntity, JUJUerEntity.Builder, JUJUerEntityOrBuilder> jujuerEntityBuilder_;
-      /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
-       */
-      public boolean hasJujuerEntity() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      private java.util.List<JUJUerEntity> jujuerEntity_ =
+        java.util.Collections.emptyList();
+      private void ensureJujuerEntityIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          jujuerEntity_ = new java.util.ArrayList<JUJUerEntity>(jujuerEntity_);
+          bitField0_ |= 0x00000010;
+         }
       }
+
+      private com.google.protobuf.RepeatedFieldBuilder<
+          JUJUerEntity, JUJUerEntity.Builder, JUJUerEntityOrBuilder> jujuerEntityBuilder_;
+
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
-      public JUJUerEntity getJujuerEntity() {
+      public java.util.List<JUJUerEntity> getJujuerEntityList() {
         if (jujuerEntityBuilder_ == null) {
-          return jujuerEntity_;
+          return java.util.Collections.unmodifiableList(jujuerEntity_);
         } else {
-          return jujuerEntityBuilder_.getMessage();
+          return jujuerEntityBuilder_.getMessageList();
         }
       }
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
-      public Builder setJujuerEntity(JUJUerEntity value) {
+      public int getJujuerEntityCount() {
+        if (jujuerEntityBuilder_ == null) {
+          return jujuerEntity_.size();
+        } else {
+          return jujuerEntityBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public JUJUerEntity getJujuerEntity(int index) {
+        if (jujuerEntityBuilder_ == null) {
+          return jujuerEntity_.get(index);
+        } else {
+          return jujuerEntityBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public Builder setJujuerEntity(
+          int index, JUJUerEntity value) {
         if (jujuerEntityBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          jujuerEntity_ = value;
+          ensureJujuerEntityIsMutable();
+          jujuerEntity_.set(index, value);
           onChanged();
         } else {
-          jujuerEntityBuilder_.setMessage(value);
+          jujuerEntityBuilder_.setMessage(index, value);
         }
-        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
       public Builder setJujuerEntity(
+          int index, JUJUerEntity.Builder builderForValue) {
+        if (jujuerEntityBuilder_ == null) {
+          ensureJujuerEntityIsMutable();
+          jujuerEntity_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          jujuerEntityBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public Builder addJujuerEntity(JUJUerEntity value) {
+        if (jujuerEntityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureJujuerEntityIsMutable();
+          jujuerEntity_.add(value);
+          onChanged();
+        } else {
+          jujuerEntityBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public Builder addJujuerEntity(
+          int index, JUJUerEntity value) {
+        if (jujuerEntityBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureJujuerEntityIsMutable();
+          jujuerEntity_.add(index, value);
+          onChanged();
+        } else {
+          jujuerEntityBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public Builder addJujuerEntity(
           JUJUerEntity.Builder builderForValue) {
         if (jujuerEntityBuilder_ == null) {
-          jujuerEntity_ = builderForValue.build();
+          ensureJujuerEntityIsMutable();
+          jujuerEntity_.add(builderForValue.build());
           onChanged();
         } else {
-          jujuerEntityBuilder_.setMessage(builderForValue.build());
+          jujuerEntityBuilder_.addMessage(builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
-      public Builder mergeJujuerEntity(JUJUerEntity value) {
+      public Builder addJujuerEntity(
+          int index, JUJUerEntity.Builder builderForValue) {
         if (jujuerEntityBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010) &&
-              jujuerEntity_ != JUJUerEntity.getDefaultInstance()) {
-            jujuerEntity_ =
-              JUJUerEntity.newBuilder(jujuerEntity_).mergeFrom(value).buildPartial();
-          } else {
-            jujuerEntity_ = value;
-          }
+          ensureJujuerEntityIsMutable();
+          jujuerEntity_.add(index, builderForValue.build());
           onChanged();
         } else {
-          jujuerEntityBuilder_.mergeFrom(value);
+          jujuerEntityBuilder_.addMessage(index, builderForValue.build());
         }
-        bitField0_ |= 0x00000010;
         return this;
       }
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public Builder addAllJujuerEntity(
+          Iterable<? extends JUJUerEntity> values) {
+        if (jujuerEntityBuilder_ == null) {
+          ensureJujuerEntityIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, jujuerEntity_);
+          onChanged();
+        } else {
+          jujuerEntityBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
       public Builder clearJujuerEntity() {
         if (jujuerEntityBuilder_ == null) {
-          jujuerEntity_ = JUJUerEntity.getDefaultInstance();
+          jujuerEntity_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           jujuerEntityBuilder_.clear();
         }
-        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
-      public JUJUerEntity.Builder getJujuerEntityBuilder() {
-        bitField0_ |= 0x00000010;
-        onChanged();
-        return getJujuerEntityFieldBuilder().getBuilder();
+      public Builder removeJujuerEntity(int index) {
+        if (jujuerEntityBuilder_ == null) {
+          ensureJujuerEntityIsMutable();
+          jujuerEntity_.remove(index);
+          onChanged();
+        } else {
+          jujuerEntityBuilder_.remove(index);
+        }
+        return this;
       }
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
-      public JUJUerEntityOrBuilder getJujuerEntityOrBuilder() {
-        if (jujuerEntityBuilder_ != null) {
-          return jujuerEntityBuilder_.getMessageOrBuilder();
-        } else {
-          return jujuerEntity_;
+      public JUJUerEntity.Builder getJujuerEntityBuilder(
+          int index) {
+        return getJujuerEntityFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public JUJUerEntityOrBuilder getJujuerEntityOrBuilder(
+          int index) {
+        if (jujuerEntityBuilder_ == null) {
+          return jujuerEntity_.get(index);  } else {
+          return jujuerEntityBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>optional .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
        */
-      private com.google.protobuf.SingleFieldBuilder<
+      public java.util.List<? extends JUJUerEntityOrBuilder>
+           getJujuerEntityOrBuilderList() {
+        if (jujuerEntityBuilder_ != null) {
+          return jujuerEntityBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(jujuerEntity_);
+        }
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public JUJUerEntity.Builder addJujuerEntityBuilder() {
+        return getJujuerEntityFieldBuilder().addBuilder(
+            JUJUerEntity.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public JUJUerEntity.Builder addJujuerEntityBuilder(
+          int index) {
+        return getJujuerEntityFieldBuilder().addBuilder(
+            index, JUJUerEntity.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .cn.glassx.wear.juju.protobuf.JUJUerEntity jujuer_entity = 6;</code>
+       */
+      public java.util.List<JUJUerEntity.Builder>
+           getJujuerEntityBuilderList() {
+        return getJujuerEntityFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
           JUJUerEntity, JUJUerEntity.Builder, JUJUerEntityOrBuilder>
           getJujuerEntityFieldBuilder() {
         if (jujuerEntityBuilder_ == null) {
-          jujuerEntityBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+          jujuerEntityBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               JUJUerEntity, JUJUerEntity.Builder, JUJUerEntityOrBuilder>(
-                  getJujuerEntity(),
+                  jujuerEntity_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           jujuerEntity_ = null;
@@ -2876,7 +3047,7 @@ public final class Proto {
       "rotobuf\"\274\001\n\010Envelope\022\014\n\004path\030\001 \002(\t\022\017\n\007ve" +
       "rsion\030\002 \002(\005\022\016\n\006extras\030\003 \001(\014\022>\n\014voice_ent" +
       "ity\030\005 \001(\0132(.cn.glassx.wear.juju.protobuf" +
-      ".VoiceEnity\022A\n\rjujuer_entity\030\006 \001(\0132*.cn." +
+      ".VoiceEnity\022A\n\rjujuer_entity\030\006 \003(\0132*.cn." +
       "glassx.wear.juju.protobuf.JUJUerEntity\"P" +
       "\n\014JUJUerEntity\022\014\n\004name\030\001 \002(\t\022\020\n\010portrail" +
       "\030\002 \001(\014\022\016\n\006labels\030\003 \001(\014\022\020\n\010distance\030\004 \001(\014" +

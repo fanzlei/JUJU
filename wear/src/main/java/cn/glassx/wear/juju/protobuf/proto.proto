@@ -7,7 +7,7 @@ message Envelope {
     required int32 version = 2;
     optional bytes extras = 3;
     optional VoiceEnity voice_entity = 5;
-    optional JUJUerEntity jujuer_entity = 6;
+    repeated JUJUerEntity jujuer_entity = 6;
 }
 
 message JUJUerEntity{
