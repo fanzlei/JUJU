@@ -1,11 +1,9 @@
-package cn.glassx.wear.juju.widget;
+package cn.glassx.wear.juju.view.widget;
 
 import android.content.Context;
-import android.graphics.drawable.GradientDrawable;
 import android.support.wearable.view.CircledImageView;
 import android.support.wearable.view.WearableListView;
 import android.util.AttributeSet;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 

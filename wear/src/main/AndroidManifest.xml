@@ -16,7 +16,7 @@
             android:value="@integer/google_play_services_version" />
 
         <activity
-            android:name=".app.JUJUerList"
+            android:name=".view.app.JUJUerList"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".app.JUJUDetail"
+            android:name=".view.app.JUJUDetail"
             android:launchMode="singleTask"/>
         <activity
             android:name="android.support.wearable.activity.ConfirmationActivity">
@@ -34,9 +34,9 @@
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
         </activity>
-        <activity android:name=".app.AnimationActivity"/>
-        <activity android:name=".app.InputMessage"/>
-        <activity android:name=".app.SelectCunstomInput"/>
+        <activity android:name=".view.app.AnimationActivity"/>
+        <activity android:name=".view.app.InputMessage"/>
+        <activity android:name=".view.app.SelectCunstomInput"/>
 
         <service
             android:name=".WearableMessageListenerService" >

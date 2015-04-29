@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package cn.glassx.wear.juju.adapter;
+package cn.glassx.wear.juju.view.adapter;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
@@ -22,8 +22,8 @@ import android.graphics.drawable.Drawable;
 import android.support.wearable.view.FragmentGridPagerAdapter;
 
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.widget.JUJUerDetailFirst;
-import cn.glassx.wear.juju.widget.SimpleFragment;
+import cn.glassx.wear.juju.view.widget.JUJUerDetailFirst;
+import cn.glassx.wear.juju.view.widget.SimpleFragment;
 
 /**
  * Constructs fragments as requested by the GridViewPager. For each row a

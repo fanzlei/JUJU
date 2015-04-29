@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.adapter;
+package cn.glassx.wear.juju.view.adapter;
 
 import android.content.Context;
 import android.support.wearable.view.WearableListView;
@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
 
 /**

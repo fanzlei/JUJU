@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.widget;
+package cn.glassx.wear.juju.view.widget;
 
 import android.app.Fragment;
 import android.graphics.drawable.BitmapDrawable;
@@ -13,8 +13,8 @@ import android.widget.TextView;
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
 import cn.glassx.wear.juju.utils.RuntimeData;
-import cn.glassx.wear.juju.app.JUJUDetail;
-import cn.glassx.wear.juju.model.JUJUer;
+import cn.glassx.wear.juju.view.app.JUJUDetail;
+import cn.glassx.wear.juju.JUJUer;
 
 /**
  * Created by Fanz on 4/7/15.

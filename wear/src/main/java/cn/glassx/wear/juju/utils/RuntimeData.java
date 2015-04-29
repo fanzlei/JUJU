@@ -3,13 +3,12 @@ package cn.glassx.wear.juju.utils;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.model.JUJUer;
+import cn.glassx.wear.juju.JUJUer;
 
 
 /**

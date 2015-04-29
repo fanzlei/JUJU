@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.model;
+package cn.glassx.wear.juju;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;

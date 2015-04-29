@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.app;
+package cn.glassx.wear.juju.view.app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,7 +8,7 @@ import android.support.wearable.view.WearableListView;
 import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
 import cn.glassx.wear.juju.utils.RuntimeData;
-import cn.glassx.wear.juju.adapter.CustomInputAdapter;
+import cn.glassx.wear.juju.view.adapter.CustomInputAdapter;
 
 /**
  * Created by Fanz on 4/15/15.

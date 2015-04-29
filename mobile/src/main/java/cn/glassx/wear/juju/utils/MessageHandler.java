@@ -23,8 +23,8 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 import cn.glassx.wear.juju.AppConfig;
-import cn.glassx.wear.juju.app.MainActivity;
-import cn.glassx.wear.juju.app.PersonDetail;
+import cn.glassx.wear.juju.view.app.MainActivity;
+import cn.glassx.wear.juju.view.app.PersonDetail;
 import cn.glassx.wear.juju.model.JUJUer;
 
 /**

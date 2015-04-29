@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.widget;
+package cn.glassx.wear.juju.view.widget;
 
 import android.app.Fragment;
 import android.graphics.drawable.Drawable;

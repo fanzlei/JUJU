@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.app;
+package cn.glassx.wear.juju.view.app;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,7 +17,7 @@ import cn.glassx.wear.juju.AppConfig;
 import cn.glassx.wear.juju.R;
 import cn.glassx.wear.juju.utils.RuntimeData;
 import cn.glassx.wear.juju.utils.SendMessageManager;
-import cn.glassx.wear.juju.adapter.GridPagerAdapter;
+import cn.glassx.wear.juju.view.adapter.GridPagerAdapter;
 
 /**
  * Created by Fanz on 4/7/15.

@@ -1,10 +1,8 @@
-package cn.glassx.wear.juju.widget;
+package cn.glassx.wear.juju.view.widget;
 
 import android.content.Context;
 import android.support.wearable.view.GridViewPager;
 import android.util.AttributeSet;
-import android.util.Log;
-import android.view.GestureDetector;
 import android.view.MotionEvent;
 
 /**

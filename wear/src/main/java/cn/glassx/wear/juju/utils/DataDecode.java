@@ -18,8 +18,8 @@ import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 import cn.glassx.wear.juju.AppConfig;
-import cn.glassx.wear.juju.app.JUJUerList;
-import cn.glassx.wear.juju.model.JUJUer;
+import cn.glassx.wear.juju.view.app.JUJUerList;
+import cn.glassx.wear.juju.JUJUer;
 
 /**
  * Created by Fanz on 4/14/15.

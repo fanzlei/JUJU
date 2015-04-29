@@ -12,6 +12,10 @@ import com.google.android.gms.wearable.MessageEvent;
 import com.google.android.gms.wearable.Node;
 import com.google.android.gms.wearable.Wearable;
 import com.google.android.gms.wearable.WearableListenerService;
+import com.test.protobuf.FirstProtobuf;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import cn.glassx.wear.juju.utils.MessageHandler;
 

@@ -1,7 +1,6 @@
-package cn.glassx.wear.juju.adapter;
+package cn.glassx.wear.juju.view.adapter;
 
 import android.content.Context;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.support.wearable.view.CircledImageView;
 import android.support.wearable.view.WearableListView;
@@ -13,7 +12,7 @@ import android.widget.TextView;
 import java.util.List;
 
 import cn.glassx.wear.juju.R;
-import cn.glassx.wear.juju.model.JUJUer;
+import cn.glassx.wear.juju.JUJUer;
 
 /**
  * Created by Fanz on 4/7/15.

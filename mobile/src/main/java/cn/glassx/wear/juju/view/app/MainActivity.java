@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.app;
+package cn.glassx.wear.juju.view.app;
 
 import android.graphics.Bitmap;
 import android.support.v7.app.ActionBarActivity;
