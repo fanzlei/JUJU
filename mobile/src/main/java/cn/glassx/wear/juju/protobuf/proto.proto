@@ -1,0 +1,28 @@
+package cn.glassx.wear.juju.protobuf;
+
+option java_outer_classname = "Proto";
+
+message Envelope {
+    required string path = 1;
+    required int32 version = 2;
+    optional bytes extras = 3;
+    optional VoiceEnity voice_entity = 5;
+    repeated JUJUerEntity jujuer_entity = 6;
+}
+
+message JUJUerEntity{
+    required string name = 1;
+    optional bytes portrail = 2;
+    optional bytes labels = 3;
+    optional bytes distance = 4;
+}
+message VoiceEnity {
+    optional int32 error_code = 1;
+    optional VoiceData voice_data = 2;
+}
+
+message VoiceData {
+    optional bytes voice_from_watch = 1;
+    optional bytes result_from_phone = 2;
+
+}

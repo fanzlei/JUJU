@@ -26,14 +26,12 @@ import cn.glassx.wear.juju.view.adapter.JujuListAdapter;
 public class JUJUerList extends Activity implements WearableListView.ClickListener {
 
     private static WearableListView personList;
-    private WearableListView.Adapter mAdapter;
-    public static Handler handler;
-    private boolean isExit = true;
     BluetoothService.MyBinder binder;
     private ServiceConnection conn = new ServiceConnection() {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             binder = (BluetoothService.MyBinder)service;
+            Log.d("bluetooth","onServiceConnected");
             getPersonList();
         }
 
@@ -49,28 +47,23 @@ public class JUJUerList extends Activity implements WearableListView.ClickListen
         setContentView(R.layout.jujuer_list);
         personList = (WearableListView) findViewById(R.id.wearable_list);
         personList.setClickListener(JUJUerList.this);
-
-        handler = new Handler(){
-            @Override
-            public void handleMessage(Message msg) {
-                super.handleMessage(msg);
-                if(msg.what == 0x123){
-                    Log.d("JUJU", "handler msg,set the adapter of personList");
-                    personList.setAdapter(new JujuListAdapter(JUJUerList.this, RuntimeData.JUJUers));
-                }
-            }
-        };
-
-        bindService(new Intent(this, BluetoothService.class),conn, Context.BIND_AUTO_CREATE );
+        bindService(new Intent(this, BluetoothService.class), conn, Context.BIND_AUTO_CREATE);
     }
 
     @Override
     public void onClick(WearableListView.ViewHolder viewHolder) {
         Log.d("JUJU","点击了位置："+viewHolder.getPosition());
-        isExit = false;
         Intent intent = new Intent(this,JUJUDetail.class);
         intent.putExtra(AppConfig.POSITION_IN_JUJUERS, viewHolder.getPosition());
         startActivity(intent);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(binder != null){
+            getPersonList();
+        }
     }
 
     @Override

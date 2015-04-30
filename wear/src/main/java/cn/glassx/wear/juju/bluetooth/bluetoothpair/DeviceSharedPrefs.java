@@ -28,7 +28,11 @@ public class DeviceSharedPrefs {
     }
 
     public BluetoothDevice getDevice(){
-        BluetoothDevice device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(sp.getString("deviceAddress",""));
-        return device;
+        if(sp.getString("deviceAddress","").equals("")){
+            return  null;
+        }else{
+            BluetoothDevice device = BluetoothAdapter.getDefaultAdapter().getRemoteDevice(sp.getString("deviceAddress",""));
+            return device;
+        }
     }
 }

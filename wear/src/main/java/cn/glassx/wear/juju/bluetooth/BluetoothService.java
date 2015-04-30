@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.IBinder;
+import android.util.Log;
 
 import cn.glassx.wear.juju.bluetooth.bluetoothpair.BluetoothStateReceiver;
 import cn.glassx.wear.juju.bluetooth.bluetoothpair.DeviceSelectActivity;
@@ -40,6 +41,7 @@ public class BluetoothService  extends Service{
 
     @Override
     public IBinder onBind(Intent intent) {
+        Log.d("juju","onBind");
         device = deviceServer.getCorrectDevice(this);
         return binder;
 

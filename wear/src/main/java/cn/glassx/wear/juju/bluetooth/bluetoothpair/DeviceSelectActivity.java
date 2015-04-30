@@ -3,6 +3,7 @@ package cn.glassx.wear.juju.bluetooth.bluetoothpair;
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,6 +21,7 @@ import java.util.List;
 
 import cn.glassx.wear.juju.JUJUer;
 import cn.glassx.wear.juju.R;
+import cn.glassx.wear.juju.view.app.JUJUerList;
 
 /**
  * Created by Fanz on 4/28/15.
@@ -42,6 +44,9 @@ public class DeviceSelectActivity extends Activity implements WearableListView.C
             switch (msg.what){
                 case ACTION_FOUND:
                     device = (BluetoothDevice)msg.obj;
+                    if(deviceList.contains(device)){
+                        break;
+                    }
                     deviceList.add(device);
                     textView.setVisibility(View.GONE);
                     listView.setAdapter(new DeviceListAdapter(context, deviceList));
@@ -88,7 +93,22 @@ public class DeviceSelectActivity extends Activity implements WearableListView.C
     @Override
     public void onClick(WearableListView.ViewHolder viewHolder) {
         BluetoothDevice device = deviceList.get(viewHolder.getPosition());
-        device.createBond();
+        switch (device.getBondState()){
+            case BluetoothDevice.BOND_BONDING:
+
+                break;
+            case BluetoothDevice.BOND_BONDED:
+                DeviceServer.setDevice(device);
+                new DeviceSharedPrefs(context).putDevice(device);
+                Intent intent = new Intent(context, JUJUerList.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
+                break;
+            case BluetoothDevice.BOND_NONE:
+                device.createBond();
+                break;
+        }
+
 
     }
 

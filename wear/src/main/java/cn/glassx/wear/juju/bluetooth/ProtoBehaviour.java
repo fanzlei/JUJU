@@ -4,17 +4,10 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
-import android.support.annotation.Nullable;
+import android.util.Log;
 
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 
-import cn.glassx.wear.juju.bluetooth.BluetoothService;
-import cn.glassx.wear.juju.bluetooth.ConnectThread;
-import cn.glassx.wear.juju.bluetooth.Constants;
-import cn.glassx.wear.juju.bluetooth.TransBehaviour;
-import cn.glassx.wear.juju.bluetooth.TransMission;
 import cn.glassx.wear.juju.protobuf.Proto;
 
 /**
@@ -39,7 +32,8 @@ public class ProtoBehaviour implements TransBehaviour {
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
         try {
             if(device != null){
-                socket = device.createRfcommSocketToServiceRecord(Constants.UUID.getUuid());
+                socket = device.createRfcommSocketToServiceRecord(BluetoothUUID.UUID.getUuid());
+                Log.d("juju","对方蓝牙设备："+device.getName());
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -66,7 +60,7 @@ public class ProtoBehaviour implements TransBehaviour {
         BluetoothSocket bluetoothSocket = getSocket();
         if(bluetoothSocket != null){
             new ConnectThread(bluetoothSocket,
-                    envelope.toByteArray(),
+                    envelope,
                     listener).start();
         }
     }

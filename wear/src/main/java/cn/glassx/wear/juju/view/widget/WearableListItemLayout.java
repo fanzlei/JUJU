@@ -17,7 +17,6 @@ public class WearableListItemLayout extends LinearLayout implements WearableList
     private  float mFadedTextAlpha;
     private  int mFadedCircleColor;
     private int mChonsenCircleColor;
-    private CircledImageView mCircle;
     private float mScale;
     private TextView mName;
 
@@ -39,23 +38,18 @@ public class WearableListItemLayout extends LinearLayout implements WearableList
     @Override
     protected void onFinishInflate() {
         super.onFinishInflate();
-        mCircle = (CircledImageView)findViewById(R.id.circle);
         mName = (TextView)findViewById(R.id.name);
     }
 
     @Override
     public void onCenterPosition(boolean b) {
         mName.animate().alpha(1f).scaleX(1.1f).scaleY(1.1f);
-        mCircle.animate().alpha(1f).scaleX(1.3f).scaleY(1.3f);
-        mCircle.setCircleColor(mChonsenCircleColor);
         //((GradientDrawable)mCircle.getDrawable()).setColor(mChonsenCircleColor);
     }
 
     @Override
     public void onNonCenterPosition(boolean b) {
         mName.animate().alpha(0.5f).scaleY(1f).scaleX(1f);
-        mCircle.animate().alpha(0.5f).scaleX(1f).scaleY(1f);
-        mCircle.setCircleColor(mFadedCircleColor);
        // ((GradientDrawable)mCircle.getDrawable()).setColor(mFadedCircleColor);
     }
 }

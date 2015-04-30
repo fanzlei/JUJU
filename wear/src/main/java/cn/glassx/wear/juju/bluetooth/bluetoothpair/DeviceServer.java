@@ -24,16 +24,20 @@ public class DeviceServer {
 
         if(device == null ){
             device = new DeviceSharedPrefs(context).getDevice();
-            if(device.getAddress().equals("")){
-                context.startActivity(new Intent(context, DeviceSelectActivity.class));
+            if(device == null){
+                Intent intent = new Intent(context, DeviceSelectActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
                 bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
                 bluetoothAdapter.enable();
                 Intent discoverableIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_DISCOVERABLE);
-                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION,300);
+                discoverableIntent.putExtra(BluetoothAdapter.EXTRA_DISCOVERABLE_DURATION, 300);
+                discoverableIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 context.startActivity(discoverableIntent);
 
                 IntentFilter filter = new IntentFilter();
                 filter.addAction(BluetoothDevice.ACTION_FOUND);
+                filter.addAction(BluetoothDevice.ACTION_BOND_STATE_CHANGED);
                 context.registerReceiver(receiver = new BluetoothStateReceiver(), filter);
                 bluetoothAdapter.startDiscovery();
             }

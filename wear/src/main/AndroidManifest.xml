@@ -3,6 +3,8 @@
     package="cn.glassx.wear.juju" >
 
     <uses-feature android:name="android.hardware.type.watch" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
         android:allowBackup="true"
@@ -45,6 +47,8 @@
             </intent-filter>
         </service>
 
+        <service android:name=".bluetooth.BluetoothService"/>
+        <activity android:name=".bluetooth.bluetoothpair.DeviceSelectActivity"/>
     </application>
 
 </manifest>

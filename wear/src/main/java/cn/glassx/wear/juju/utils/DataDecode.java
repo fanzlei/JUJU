@@ -54,7 +54,7 @@ public class DataDecode {
         }
         Log.d("JUJU", "JUJUList size=" + RuntimeData.JUJUers.size());
 
-        JUJUerList.handler.sendEmptyMessage(0x123);
+        //JUJUerList.handler.sendEmptyMessage(0x123);
     }
 
     private static Bitmap loadBitmapFromAsset(Asset asset) {
