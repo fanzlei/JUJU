@@ -1,25 +1,20 @@
-package cn.glassx.wear.juju.bluetooth.bluetoothpair;
+package cn.glassx.wear.juju.bluetooth.pair;
 
 import android.app.Activity;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.wearable.view.CircledImageView;
 import android.support.wearable.view.WearableListView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import cn.glassx.wear.juju.JUJUer;
 import cn.glassx.wear.juju.R;
 import cn.glassx.wear.juju.view.app.JUJUerList;
 

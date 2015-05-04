@@ -3,7 +3,11 @@ package cn.glassx.wear.juju.bluetooth;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
+import android.content.ComponentName;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.util.Log;
 
 import com.google.protobuf.CodedInputStream;
@@ -12,6 +16,7 @@ import com.google.protobuf.CodedOutputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 
 import cn.glassx.wear.juju.ContantPath;
 import cn.glassx.wear.juju.protobuf.Proto;
@@ -51,9 +56,10 @@ public class AcceptThread extends Thread {
                 Proto.Envelope.Builder builder = Proto.Envelope.newBuilder();
                 builder.setVersion(envelope.getVersion())
                         .setPath(envelope.getPath())
-                        .setJujuerEntity(0,jujUerEntity);
+                        .setJujuerEntity(0, jujUerEntity);
                 Proto.Envelope envelope1 = builder.build();
                 envelope1.writeTo(CodedOutputStream.newInstance(socket.getOutputStream()));
+
 
             }
             socket.close();

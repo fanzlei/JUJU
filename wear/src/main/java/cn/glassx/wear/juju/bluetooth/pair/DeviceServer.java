@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.bluetooth.bluetoothpair;
+package cn.glassx.wear.juju.bluetooth.pair;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -6,6 +6,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+
+import cn.glassx.wear.juju.AppConfig;
 
 /**
  * Created by Fanz on 4/29/15.
@@ -15,12 +17,9 @@ public class DeviceServer {
     private BluetoothAdapter bluetoothAdapter;
     public static BroadcastReceiver receiver;
     private static BluetoothDevice device;
-    interface DeviceCallBack{
-        void onDeviceBack(BluetoothDevice device);
-    }
+
 
     public BluetoothDevice getCorrectDevice(Context context){
-        //todo 连接测试已有的device不可用
 
         if(device == null ){
             device = new DeviceSharedPrefs(context).getDevice();
@@ -51,5 +50,11 @@ public class DeviceServer {
     }
     public static BluetoothDevice getDevice(){
         return device;
+    }
+
+    public  void setNewDevice(){
+        device = null;
+        new DeviceSharedPrefs(AppConfig.applicationContext).resetDevice();
+        getCorrectDevice(AppConfig.applicationContext);
     }
 }

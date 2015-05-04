@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.bluetooth.bluetoothpair;
+package cn.glassx.wear.juju.bluetooth.pair;
 
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;

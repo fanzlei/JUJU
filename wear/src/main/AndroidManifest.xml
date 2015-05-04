@@ -48,7 +48,7 @@
         </service>
 
         <service android:name=".bluetooth.BluetoothService"/>
-        <activity android:name=".bluetooth.bluetoothpair.DeviceSelectActivity"/>
+        <activity android:name=".bluetooth.pair.DeviceSelectActivity"/>
     </application>
 
 </manifest>

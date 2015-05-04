@@ -1,4 +1,4 @@
-package cn.glassx.wear.juju.bluetooth.bluetoothpair;
+package cn.glassx.wear.juju.bluetooth.pair;
 
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
@@ -26,6 +26,12 @@ public class DeviceSharedPrefs {
         editor.putString("deviceAddress",device.getAddress());
         editor.commit();
     }
+
+    public void resetDevice(){
+        editor.putString("deviceName","");
+        editor.putString("deviceAddress","");
+    }
+
 
     public BluetoothDevice getDevice(){
         if(sp.getString("deviceAddress","").equals("")){

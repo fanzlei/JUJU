@@ -4,12 +4,8 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothServerSocket;
 import android.bluetooth.BluetoothSocket;
 import android.content.BroadcastReceiver;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.ServiceConnection;
-import android.os.IBinder;
 import android.util.Log;
 
 import com.google.protobuf.CodedInputStream;
@@ -20,7 +16,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import cn.glassx.wear.juju.AppConfig;
+import cn.glassx.wear.juju.bluetooth.pair.DeviceServer;
 import cn.glassx.wear.juju.protobuf.Proto;
 
 /**
@@ -70,20 +66,9 @@ public class ConnectThread extends Thread{
             }
             socket1.close();
         } catch (IOException e) {
+            //连接手机失败，重新选择手机设备
             Log.d("juju", "连接到蓝牙SOCKET失败");
-            Log.d("juju"," socket fail , rebind bluetooth");
-            AppConfig.applicationContext.bindService(new Intent(AppConfig.applicationContext, BluetoothService.class),
-                    new ServiceConnection() {
-                        @Override
-                        public void onServiceConnected(ComponentName name, IBinder service) {
-                            Log.d("juju", "onServiceConnected ");
-                        }
-
-                        @Override
-                        public void onServiceDisconnected(ComponentName name) {
-
-                        }
-                    }, Context.BIND_AUTO_CREATE);
+            new DeviceServer().setNewDevice();
             e.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();

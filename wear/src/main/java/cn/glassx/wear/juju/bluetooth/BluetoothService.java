@@ -5,14 +5,11 @@ import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
-import cn.glassx.wear.juju.bluetooth.bluetoothpair.BluetoothStateReceiver;
-import cn.glassx.wear.juju.bluetooth.bluetoothpair.DeviceSelectActivity;
-import cn.glassx.wear.juju.bluetooth.bluetoothpair.DeviceServer;
+import cn.glassx.wear.juju.bluetooth.pair.DeviceServer;
 
 /**
  * Created by Fanz on 4/28/15.
